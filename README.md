@@ -52,7 +52,7 @@ The gem doesn't require any additional configuration. However, it's recommended 
 
 ## Submitting a Pull Request
 
-1. [Fork](https://help.github.com/articles/fork-a-repo/) the [official repository](https://github.com/gullariz12/google_reviews).
+1. [Fork](https://help.github.com/articles/fork-a-repo/) the [official repository](https://github.com/TheArtOfCoding/google_reviews).
 1. [Create a topic branch.](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/)
 1. Implement your feature or bug fix.
 1. Add, commit, and push your changes.
