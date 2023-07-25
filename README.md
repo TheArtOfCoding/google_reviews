@@ -30,12 +30,13 @@ require 'google_reviews'
 api_key = 'YOUR_API_KEY'
 place_id = 'PLACE_ID'
 
-reviews = GoogleReviews::Reviews.fetch_reviews_by_place_id(api_key, place_id)
+response = GoogleReviews::Reviews.fetch_reviews_by_place_id(api_key, place_id)
+reviews = response.data
 
 reviews.each do |review|
-  puts "Author: #{review[:author_name]}"
-  puts "Rating: #{review[:rating]}"
-  puts "Review Text: #{review[:text]}"
+  puts "Author: #{review.author_name}"
+  puts "Rating: #{review.rating}"
+  puts "Review Text: #{review.text}"
   puts "---"
 end
 ```
@@ -44,12 +45,7 @@ Make sure to replace `YOUR_API_KEY` with your actual Google Places API key.
 
 ## Error Handling
 
-The gem provides custom error classes that you can handle to deal with specific error scenarios. Here are the error classes available:
-
-- `GoogleReviews::ApiError:` Represents general API-related errors.
-- `GoogleReviews::InvalidApiKeyError:` Indicates an invalid API key error.
-- `GoogleReviews::InvalidPlaceIdError:` Indicates an invalid place ID error.
-You can rescue and handle these errors to provide appropriate error handling in your application.
+The gem provides custom method `response.success?` to check if the action was successful. If the action was successful, `response.data` will contain an array of `GoogleReview::Review` objects. In the case of an error, `response.error` will provide a descriptive error message explaining what went wrong.
 
 ## Configuration
 The gem doesn't require any additional configuration. However, it's recommended to configure the locale for translations. By default, the gem uses English (`:en`) as the locale. If you want to use a different locale, you can modify the `lib/google_reviews/translations.rb file`.
